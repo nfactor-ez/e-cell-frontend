@@ -29,8 +29,9 @@ function InitiativeCard({
       {/* Image Container */}
       <div className="relative h-48 overflow-hidden">
         {isExternal ? (
-          <Image
-            src={image}
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={image as string}
             alt={title}
             className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
             loading="lazy"
