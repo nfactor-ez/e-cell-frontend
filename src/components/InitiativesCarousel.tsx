@@ -35,7 +35,12 @@ export default function InitiativesCarousel({ initiatives }: Props) {
             trigger: initiativeRef.current,
             pin: true,
             scrub: 1,
-            end: () => "+=" + (initiativeRef.current?.offsetWidth || 0),
+            onresize: () => ScrollTrigger.refresh(),
+            invalidateOnRefresh: true,
+            start: "top top+=160",
+            end: () =>
+              "+=" +
+              (initiativeRef.current?.offsetWidth || 0) * (sections.length - 1),
           },
         });
       }
