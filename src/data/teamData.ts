@@ -2,7 +2,6 @@ export type HeadInfo = {
   id: number;
   name: string;
   position: string;
-  motto?: string;
   image: string;
   linkedin?: string;
   instagram?: string;
@@ -62,8 +61,6 @@ export const teamData: TeamInfo = {
       id: 16,
       name: "Ahmed Sahigara",
       position: "Department Head",
-      motto:
-        "Entrepreneurship shines in proving that every problem carries within it a solution.",
       image:
         "https://res.cloudinary.com/dmaalzm4h/image/upload/v1762077497/Ahmed_Sahigara_n6vm4b.webp",
       linkedin: "https://www.linkedin.com/in/ahmed-sahigara/",
@@ -74,7 +71,7 @@ export const teamData: TeamInfo = {
       name: "Sanchit Sood",
       position: "Department Head",
       image:
-        "https://res.cloudinary.com/dmaalzm4h/image/upload/v1762079587/Sanchit_jhojsh.webp",
+        "https://res.cloudinary.com/dmaalzm4h/image/upload/v1762181807/Sanchit_pglzmb.webp",
       linkedin: "https://www.linkedin.com/in/sanchit-sood-8583a02aa/",
     },
   ],
@@ -83,7 +80,6 @@ export const teamData: TeamInfo = {
       id: 2,
       name: "Aryan Nair",
       position: "Department Head",
-      motto: "There's always light at the end of the tunnel",
       image:
         "https://res.cloudinary.com/dmaalzm4h/image/upload/v1762077498/Aryan_Nair_ls6fxt.webp",
       linkedin: "https://www.linkedin.com/in/aryan-nair-a1805-n/",
@@ -103,7 +99,6 @@ export const teamData: TeamInfo = {
       id: 5,
       name: "Prakhar Bhagat ",
       position: "Department Head",
-      motto: "Efficiency Efficiency Efficiency",
       image:
         "https://res.cloudinary.com/dmaalzm4h/image/upload/v1762079612/Prakhar_ph5xio.webp",
       linkedin: "https://www.linkedin.com/in/prakhar-bhagat/",
@@ -114,7 +109,6 @@ export const teamData: TeamInfo = {
       id: 3,
       name: "Krishna Vatsal Mishra",
       position: "Department Head",
-      motto: "Tez nahi, zyada bhaag",
       image:
         "https://res.cloudinary.com/dmaalzm4h/image/upload/v1762077684/Krishna_Vatsal_Mishra_dncrj6.webp",
       linkedin: "https://www.linkedin.com/in/krishna-vatsal-mishra-163638258/",
@@ -160,7 +154,6 @@ export const teamData: TeamInfo = {
       id: 4,
       name: "Preyanshi Doshi",
       position: "Department Head",
-      motto: "Passion fuels purpose",
       image:
         "https://res.cloudinary.com/dmaalzm4h/image/upload/v1762077733/Preyanshi_Doshi_a6cppr.webp",
       linkedin: "https://www.linkedin.com/in/preyanshi-doshi-0aa909281/",
