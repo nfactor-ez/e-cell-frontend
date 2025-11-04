@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import Image from "next/image";
 
 // Components
@@ -8,7 +8,12 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 // Import team data
-import { type HeadInfo, teamData } from "@/data/teamData";
+import {
+  getAvailableYears,
+  getDepartmentsForYear,
+  type HeadInfo,
+  teamData,
+} from "@/data/teamData";
 
 // Department Head Card Component
 function DepartmentHeadCard({ head }: { head: HeadInfo }) {
@@ -126,10 +131,31 @@ function DepartmentMenu({
 }
 
 export default function TeamPage() {
-  const departments = Object.keys(teamData);
+  const availableYears = useMemo(() => getAvailableYears(), []);
+
+  const yearRange = `${new Date().getFullYear()}-${(new Date().getFullYear() + 1).toString().slice(-2)}`;
+  const [selectedYear, setSelectedYear] = useState(
+    availableYears[0] || yearRange,
+  );
+
+  const departments = useMemo(
+    () => getDepartmentsForYear(selectedYear),
+    [selectedYear],
+  );
   const [activeDepartment, setActiveDepartment] = useState(departments[0]);
 
-  const currentHeads = teamData[activeDepartment] || [];
+  const handleYearChange = (newYear: string) => {
+    setSelectedYear(newYear);
+    const newDepartments = getDepartmentsForYear(newYear);
+    if (newDepartments.length > 0) {
+      setActiveDepartment(newDepartments[0]);
+    }
+  };
+
+  const currentHeads = useMemo(
+    () => teamData[selectedYear]?.[activeDepartment] || [],
+    [selectedYear, activeDepartment],
+  );
   const headsCount = currentHeads.length;
 
   return (
@@ -150,6 +176,8 @@ export default function TeamPage() {
       {/* Main Content */}
       <main className="py-16 bg-slate-800">
         <div className="container mx-auto px-6">
+          {/* Filter Dropdowns */}
+
           <div className="grid lg:grid-cols-3 gap-12">
             {/* Department Menu - Left Side */}
             <div className="lg:col-span-1">
