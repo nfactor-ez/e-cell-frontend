@@ -1,6 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# E-Cell Frontend
 
-## Getting Started
+A frontend repository built with [Next.js](https://nextjs.org), for the official website
+of [Entrepreneurship Cell, MIT Manipal](https://www.ecellmit.in/)
+
+---
+
+## Table of Contents
+
+1. [Project Organisation](#project-organisation)
+2. [First-Time Setup](#first-time-setup)
+3. [How to contribute](#how-to-contribute)
+4. [Learn more about Next.js](#learn-more-about-nextjs)
+
+## Project Organisation
+
+| Directory         | Purpose                                            |
+|-------------------|----------------------------------------------------|
+| `src/app/`        | React Frontend with Next.js App Router             |
+| `src/components/` | Feature modules (e.g., `healthCheck`, `user`)      |
+| `src/lib/`        | Shared utilities                                   |
+| `src/data/`       | Constant data needed throughout the website        |
+| `public/`         | Serve static files in production (Not recommended) |
+| `.env.example`    | NA, might needed in future                         |
+
+---
+
+## First-Time Setup
+
+### Dependencies
+
+- Node.js (preferably LTS version)
+- pnpm (or NPM/Yarn, but `pnpm` is used by default)
+
+## Setup Steps
 
 First, run the development server:
 
@@ -16,21 +48,29 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## How to contribute
 
-## Learn More
+1. Fork this repository.
+2. Create a new branch: `git checkout -b feature/your-feature`.
+3. Make your changes, ensure tests pass, if implemented.
+4. Follow the existing code style (passing lints `npm run lint` or `pnpm lint`; formatted code `npm run format` or
+   `pnpm format`)
+5. Commit with clear message and push your branch.
+6. Open a pull request describing your change and why it’s beneficial.
+7. The head will review and merge once CI (if configured) is passing.
+
+---
+
+## Learn More about Next.js
 
 To learn more about Next.js, take a look at the following resources:
 
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Kudos to you for being a frontend contributor for E-Cell. Thanks and hope to see your code powering our technical
+infrastructure.
