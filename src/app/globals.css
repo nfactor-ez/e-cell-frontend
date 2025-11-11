@@ -242,6 +242,9 @@ select.form-input option {
   color: #FF5E5E;
   transform: scale(1.08);
 }
+.custom-upload.selected {
+  color: #FFD464;
+}
 
 /* ✨ Input Glow */
 .glow-focus:focus {
@@ -273,4 +276,3 @@ select.form-input option {
 .animate-slowFloat { animation: slowFloat 18s ease-in-out infinite; }
 .animate-slowFloatReverse { animation: slowFloatReverse 22s ease-in-out infinite; }
 .animate-slowPulse { animation: slowPulse 20s ease-in-out infinite; }
-
