@@ -132,7 +132,7 @@
   --button-shadow: 0 0 25px rgba(255, 180, 87, 0.35);
 }
 
-/* 🎨 Form Container */
+/* Form Container */
 .form-container {
   background: rgba(20, 20, 20, 0.65);
   border: 1.5px solid rgba(255, 212, 100, 0.35);
@@ -143,7 +143,7 @@
   color: #fdfdfd;
 }
 
-/* ✍️ Labels */
+/* Labels */
 .form-label {
   display: block;
   font-weight: 600;
@@ -151,7 +151,7 @@
   margin-bottom: 0.35rem;
 }
 
-/* 📥 Inputs */
+/* Inputs */
 .form-input {
   background: rgba(255, 255, 255, 0.12);
   color: #ffffff;
@@ -174,7 +174,7 @@
               0 0 35px rgba(255, 94, 94, 0.25);
 }
 
-/* 🎓 Custom Select */
+/* Custom Select */
 select.form-input {
   appearance: none;
   background-color: rgba(255, 255, 255, 0.12);
@@ -191,7 +191,7 @@ select.form-input option {
   color: #fff;
 }
 
-/* 📂 Upload Button */
+/* Upload Button */
 .custom-upload {
   display: inline-flex;
   align-items: center;
@@ -231,7 +231,7 @@ select.form-input option {
   transform: scale(1.1);
 }
 
-/* 💫 Add Member Button */
+/* Add Member Button */
 .add-btn {
   color: #FFD464;
   transform: scale(1);
@@ -246,7 +246,7 @@ select.form-input option {
   color: #FFD464;
 }
 
-/* ✨ Input Glow */
+/* Input Glow */
 .glow-focus:focus {
   outline: none;
   border-color: #FFD464;
@@ -255,7 +255,7 @@ select.form-input option {
   transition: box-shadow 0.25s ease, border 0.25s ease;
 }
 
-/* 🌈 Gradient Animations */
+/* Gradient Animations */
 @keyframes slowFloat {
   0% { transform: translateY(0px) translateX(0px) scale(1); }
   50% { transform: translateY(-40px) translateX(20px) scale(1.05); }

@@ -19,7 +19,7 @@ export default function ConceptioPage() {
   const [message, setMessage] = useState("");
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
-  // 🌈 Parallax Lighting Effect
+  // Lighting Effect
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       const { innerWidth, innerHeight } = window;
@@ -105,7 +105,7 @@ export default function ConceptioPage() {
   return (
     <main>
       <div className="relative min-h-screen flex items-center justify-center bg-[#0b0b0d] overflow-hidden py-20 px-4">
-        {/*Glowing Gradient Background */}
+        {/*Gradient Background */}
         <div className="absolute inset-0">
           <div
             className="absolute -top-32 -left-32 w-[600px] h-[600px] bg-gradient-to-r from-[#FF5E5E] via-[#FFD464] to-[#E23C64] opacity-30 blur-[140px] animate-slowFloat"
@@ -237,11 +237,8 @@ export default function ConceptioPage() {
             </div>
 
             {/* Team Members */}
-            {/* ---------------------------
-   Team Members (heading + list + button)
-   --------------------------- */}
+  
             <div>
-              {/* Heading with centered small help text */}
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">
                   <h2 className="text-2xl font-bold text-[#FFD464] leading-none">Team Members</h2>
@@ -249,7 +246,6 @@ export default function ConceptioPage() {
                     (Optional, max 3 additional members)
                   </span>
                 </div>
-                {/* Add button placed at the right - dashed rounded style like your screenshot */}
                 {form.teamMembers.length < 3 && (
                   <button
                     type="button"
@@ -293,7 +289,6 @@ export default function ConceptioPage() {
                       ))}
                     </select>
 
-                    {/* Delete button for added members (i > 0) — positioned to the right, not overlapping */}
                     {i > 0 && (
                       <button
                         type="button"
