@@ -13,7 +13,7 @@ export default function ConceptioPage() {
     contactNumber: "",
     college: "",
     yearOfStudy: "",
-    teamMembers: [{ name: "", yearOfStudy: "" }],
+    teamMembers: [] as Array<{ name: string; yearOfStudy: string }>,
   });
 
   const [message, setMessage] = useState("");
@@ -55,7 +55,6 @@ export default function ConceptioPage() {
     "Manipal Institute of Technology Bengaluru",
   ] as const;
 
-
   const addMember = () => {
     if (form.teamMembers.length < 4) {
       setForm((prev) => ({
@@ -68,6 +67,11 @@ export default function ConceptioPage() {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
+    // FIX #2 — Remove empty team members
+    const cleanedMembers = form.teamMembers.filter(
+      (m) => m.name.trim() !== "" && m.yearOfStudy !== ""
+    );
+
     try {
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/submission`, {
         method: "POST",
@@ -76,9 +80,10 @@ export default function ConceptioPage() {
         },
         body: JSON.stringify({
           ...form,
+          teamMembers: cleanedMembers,
           supportingFiles: {
-            pitchDeckUrl: "https://example.com/pitchdeck.pdf", // temporary placeholder
-            pitchVideoUrl: "https://example.com/video.mp4", // same here
+            pitchDeckUrl: "https://example.com/pitchdeck.pdf",
+            pitchVideoUrl: "https://example.com/video.mp4",
           },
         }),
       });
@@ -96,11 +101,10 @@ export default function ConceptioPage() {
       console.error("Network error:", error);
       setMessage("❌ Failed to connect to the server");
     }
+
     setPitchDeckFile(null);
     setPitchVideoFile(null);
-
   };
-
 
   return (
     <main>
@@ -148,6 +152,7 @@ export default function ConceptioPage() {
             Submit your startup idea to get mentorship, feedback & a chance to win prizes!
           </p>
           <h2 className="text-2xl font-bold text-[#FFD464] mb-4">Team Information</h2>
+
           <form onSubmit={handleSubmit} className="space-y-8">
             {/*Basic Info */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -189,16 +194,22 @@ export default function ConceptioPage() {
               </div>
               <div>
                 <label className="form-label">Contact Number *</label>
+                {/* FIX #3 — Correct validation */}
                 <input
                   type="tel"
                   name="contactNumber"
                   value={form.contactNumber}
                   onChange={handleChange}
                   placeholder="9876543210"
+                  pattern="[0-9]{10}"
+                  maxLength={10}
+                  inputMode="numeric"
+                  title="Enter a 10-digit phone number"
                   className="form-input glow-focus"
                   required
                 />
               </div>
+
               <div>
                 <label className="form-label">College *</label>
                 <select
@@ -237,7 +248,6 @@ export default function ConceptioPage() {
             </div>
 
             {/* Team Members */}
-  
             <div>
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">
@@ -246,6 +256,7 @@ export default function ConceptioPage() {
                     (Optional, max 3 additional members)
                   </span>
                 </div>
+
                 {form.teamMembers.length < 3 && (
                   <button
                     type="button"
@@ -265,7 +276,6 @@ export default function ConceptioPage() {
                 )}
               </div>
 
-              {/* Members list */}
               <div className="space-y-3">
                 {form.teamMembers.map((member, i) => (
                   <div key={i} className="relative grid grid-cols-1 md:grid-cols-2 gap-5 mb-3">
@@ -312,7 +322,6 @@ export default function ConceptioPage() {
               </div>
             </div>
 
-
             {/* File Upload */}
             <div>
               <h2 className="text-2xl font-bold text-[#FFD464] mb-4 ">Submission Files</h2>
@@ -332,9 +341,7 @@ export default function ConceptioPage() {
                   </label>
 
                   {pitchDeckFile && (
-                    <p className="text-xs text-green-400 mt-1">
-                      ✅ {pitchDeckFile.name} selected
-                    </p>
+                    <p className="text-xs text-green-400 mt-1">✅ {pitchDeckFile.name} selected</p>
                   )}
 
                   <p className="text-xs text-[#FFD464]/70 mt-1">
@@ -342,12 +349,10 @@ export default function ConceptioPage() {
                   </p>
                 </div>
 
-
                 <div>
                   <label className="form-label">Pitch Deck Explainer Video *</label>
 
                   <label className={`custom-upload mt-2 mb-2 cursor-pointer ${pitchVideoFile ? "selected" : ""}`}>
-
                     <img src="/upload.svg" alt="Upload" className="w-5 h-5 mr-2" />
                     {pitchVideoFile ? "File Selected: " + pitchVideoFile.name : "Upload File"}
                     <input
@@ -359,16 +364,13 @@ export default function ConceptioPage() {
                   </label>
 
                   {pitchVideoFile && (
-                    <p className="text-xs text-green-400 mt-1">
-                      ✅ {pitchVideoFile.name} selected
-                    </p>
+                    <p className="text-xs text-green-400 mt-1">✅ {pitchVideoFile.name} selected</p>
                   )}
 
                   <p className="text-xs text-[#FFD464]/70 mt-1">
                     File size limit: 100MB | Allowed types: Video
                   </p>
                 </div>
-
               </div>
             </div>
 
@@ -380,9 +382,7 @@ export default function ConceptioPage() {
               Submit
             </button>
 
-            {message && (
-              <p className="text-center text-[#FFD464] mt-4 font-medium">{message}</p>
-            )}
+            {message && <p className="text-center text-[#FFD464] mt-4 font-medium">{message}</p>}
           </form>
         </div>
       </div>
