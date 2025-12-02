@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 export default function ConceptioPage() {
   const [pitchDeckFile, setPitchDeckFile] = useState<File | null>(null);
@@ -108,56 +109,73 @@ export default function ConceptioPage() {
 
   return (
     <main>
-      <div className="relative min-h-screen flex items-center justify-center bg-[#0b0b0d] overflow-hidden py-20 px-4">
+      <Navbar />
+      <div
+        className="min-h-screen flex items-center justify-center overflow-hidden py-20 px-4 fixed inset-0 -z-10"
+        style={{
+          backgroundImage: "url('/galaxy.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundAttachment: "fixed",
+
+        }}
+      />
+      <div className="relative min-h-screen flex items-center justify-center overflow-hidden py-20 px-4">
         {/*Gradient Background */}
         <div className="absolute inset-0">
           <div
-            className="absolute -top-32 -left-32 w-[600px] h-[600px] bg-gradient-to-r from-[#FF5E5E] via-[#FFD464] to-[#E23C64] opacity-30 blur-[140px] animate-slowFloat"
+            className="absolute -top-32 -left-32 w-[600px] h-[600px] opacity-30 blur-[140px] animate-slowFloat rounded-full"
             style={{
+              background:
+                "radial-gradient(circle at 25% 30%, rgba(79,70,229,0.28) 0%, transparent 45%), radial-gradient(circle at 50% 60%, rgba(59,130,246,0.14) 0%, transparent 40%)",
               transform: `translate(${mousePos.x / 8}px, ${mousePos.y / 8}px)`,
             }}
           ></div>
           <div
-            className="absolute top-1/3 right-0 w-[500px] h-[500px] bg-gradient-to-r from-[#B0183D] via-[#FF5E5E] to-[#FFD464] opacity-25 blur-[130px] animate-slowFloatReverse"
+            className="absolute top-1/3 right-0 w-[500px] h-[500px] opacity-22 blur-[130px] animate-slowFloatReverse rounded-full"
             style={{
+              background:
+                "radial-gradient(circle at 70% 40%, rgba(99,102,241,0.22) 0%, transparent 45%), radial-gradient(circle at 30% 70%, rgba(124,58,237,0.12) 0%, transparent 40%)",
               transform: `translate(${mousePos.x / -10}px, ${mousePos.y / 10}px)`,
             }}
           ></div>
           <div
-            className="absolute bottom-0 left-1/3 w-[400px] h-[400px] bg-gradient-to-br from-[#FFD464] via-[#FF5E5E] to-[#E23C64] opacity-20 blur-[160px] animate-slowPulse"
+            className="absolute bottom-0 left-1/3 w-[400px] h-[400px] opacity-16 blur-[160px] animate-slowPulse rounded-full"
             style={{
+              background:
+                "radial-gradient(circle at 60% 40%, rgba(14,165,233,0.12) 0%, transparent 50%), radial-gradient(circle at 20% 20%, rgba(99,102,241,0.06) 0%, transparent 60%)",
               transform: `translate(${mousePos.x / 12}px, ${mousePos.y / -12}px)`,
             }}
           ></div>
         </div>
 
         {/*Form Container */}
-        <div className="relative z-10 w-full max-w-3xl form-container">
-          <img
-            src="/transparent-logo.webp"
-            alt="Logo"
-            className="w-20 h-20 align-center mx-auto mb-4"
-          />
+        <div className="relative z-10 w-full max-w-3xl form-container" style={{ background: "rgba(6,10,28,0.8)", borderColor: "rgba(99,102,241,0.06)" }}>
+          <img src="/transparent-logo.webp" alt="Logo" className="w-20 h-20 align-center mx-auto mb-4" />
           <h1
-            className="text-4xl md:text-5xl font-extrabold text-center mb-3 bg-gradient-to-r 
-             from-[#FFD464] via-[#FF5E5E] to-[#E23C64]
-             bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(255,94,94,0.3)]"
+            className="text-4xl md:text-5xl font-extrabold text-center mb-3 bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(59,130,246,0.12)]"
+            style={{
+              background:
+                "linear-gradient(90deg, #9fb3ff 0%, #7c8ef0 50%, #be58f5 100%)",
+              WebkitBackgroundClip: "text",
+            }}
           >
             Conceptiō – Ideathon ‘26
           </h1>
 
-          <p className="text-center text-[#FCEDD8] mb-10 font-medium">
-            Organized by <span className="font-semibold text-[#FFD464]">E-Cell MIT, Manipal</span>
+          <p className="text-center text-[#fffff] mb-10 font-medium">
+            Organized by <span className="font-semibold text-[#9fb3ff]">E-Cell MIT, Manipal</span>
             <br />
             Submit your startup idea to get mentorship, feedback & a chance to win prizes!
           </p>
-          <h2 className="text-2xl font-bold text-[#FFD464] mb-4">Team Information</h2>
+          <h2 className="text-2xl font-bold text-[#ffffff] mb-4">Team Information</h2>
 
           <form onSubmit={handleSubmit} className="space-y-8">
             {/*Basic Info */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label className="form-label">Team Name *</label>
+                <label className="form-label" style={{ color: "#9fb3ff" }}>Team Name *</label>
                 <input
                   type="text"
                   name="teamName"
@@ -169,7 +187,7 @@ export default function ConceptioPage() {
                 />
               </div>
               <div>
-                <label className="form-label">Full Name (Team Leader) *</label>
+                <label className="form-label" style={{ color: "#9fb3ff" }}>Full Name (Team Leader) *</label>
                 <input
                   type="text"
                   name="teamLeaderName"
@@ -181,7 +199,7 @@ export default function ConceptioPage() {
                 />
               </div>
               <div>
-                <label className="form-label">Email ID *</label>
+                <label className="form-label" style={{ color: "#9fb3ff" }}>Email ID *</label>
                 <input
                   type="email"
                   name="email"
@@ -193,7 +211,7 @@ export default function ConceptioPage() {
                 />
               </div>
               <div>
-                <label className="form-label">Contact Number *</label>
+                <label className="form-label" style={{ color: "#9fb3ff" }}>Contact Number *</label>
                 {/* FIX #3 — Correct validation */}
                 <input
                   type="tel"
@@ -211,7 +229,7 @@ export default function ConceptioPage() {
               </div>
 
               <div>
-                <label className="form-label">College *</label>
+                <label className="form-label" style={{ color: "#9fb3ff" }}>College *</label>
                 <select
                   name="college"
                   value={form.college}
@@ -229,7 +247,7 @@ export default function ConceptioPage() {
               </div>
 
               <div>
-                <label className="form-label">Year of Study (Leader) *</label>
+                <label className="form-label" style={{ color: "#9fb3ff" }}>Year of Study (Leader) *</label>
                 <select
                   name="yearOfStudy"
                   value={form.yearOfStudy}
@@ -251,8 +269,8 @@ export default function ConceptioPage() {
             <div>
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">
-                  <h2 className="text-2xl font-bold text-[#FFD464] leading-none">Team Members</h2>
-                  <span className="text-sm text-[#FFD464]/85 leading-none">
+                  <h2 className="text-2xl font-bold text-[#ffffff] leading-none">Team Members</h2>
+                  <span className="text-sm text-[#9fb3ff]/85 leading-none">
                     (Optional, max 3 additional members)
                   </span>
                 </div>
@@ -262,15 +280,26 @@ export default function ConceptioPage() {
                     type="button"
                     onClick={addMember}
                     className="inline-flex items-center gap-3 px-4 py-2 rounded-xl
-                   border-2 border-dashed border-[#FFD464]/35
-                   bg-[#FFD464]/10 hover:bg-[#FFD464]/30
-                   text-[#FFD464] font-semibold
+                   border-2 border-dashed border-[#9fb3ff]/25
+                   bg-[#9fb3ff]/6 hover:bg-[#9fb3ff]/12
+                   text-[#9fb3ff] font-semibold
                    transition-all duration-200
-                   shadow-[inset_0_0_0_1px_rgba(255,214,100,0.03)]"
+                   shadow-[inset_0_0_0_1px_rgba(79,70,229,0.03)]"
                   >
-                    <span className="w-6 h-6 rounded-full flex items-center justify-center text-lg bg-transparent border border-[#FFD464]/40">
-                      +
+                    <span className="w-6 h-6 rounded-full flex items-center justify-center
+  bg-transparent border border-[#9fb3ff]/40">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="w-3.5 h-3.5 text-[#9fb3ff] translate-x-[0.5px]"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 5v14m7-7H5" />
+                      </svg>
                     </span>
+
                     <span>Add Team Member</span>
                   </button>
                 )}
@@ -299,7 +328,7 @@ export default function ConceptioPage() {
                       ))}
                     </select>
 
-                    {i > 0 && (
+                    {i > -1 && (
                       <button
                         type="button"
                         onClick={() =>
@@ -324,13 +353,21 @@ export default function ConceptioPage() {
 
             {/* File Upload */}
             <div>
-              <h2 className="text-2xl font-bold text-[#FFD464] mb-4 ">Submission Files</h2>
+              <h2 className="text-2xl font-bold text-[#ffffff] mb-4 ">Submission Files</h2>
               <div className="space-y-6">
                 <div>
-                  <label className="form-label">Pitch Deck (PDF/PPT) *</label>
+                  <label className="form-label" style={{ color: "#9fb3ff" }}>Pitch Deck (PDF/PPT) *</label>
 
-                  <label className={`custom-upload mt-2 mb-2 cursor-pointer ${pitchDeckFile ? "selected" : ""}`}>
-                    <img src="/upload.svg" alt="Upload" className="w-5 h-5 mr-2" />
+                  <label
+                    className={`custom-upload mt-2 mb-2 cursor-pointer ${pitchDeckFile ? "selected" : ""}`}
+                    style={{
+                      backgroundColor: pitchDeckFile ? "#5b61ff" : "#25304d",
+                      border: pitchDeckFile ? "2px solid #8fa2ff" : "2px solid #2f3b5c",
+                      color: "#ffffff",
+                    }}
+
+                  >
+                    <img src="/upload.svg" alt="Upload" className="w-5 h-5 mr-2 invert" />
                     {pitchDeckFile ? "File Selected: " + pitchDeckFile.name : "Upload File"}
                     <input
                       type="file"
@@ -341,19 +378,26 @@ export default function ConceptioPage() {
                   </label>
 
                   {pitchDeckFile && (
-                    <p className="text-xs text-green-400 mt-1">✅ {pitchDeckFile.name} selected</p>
+                    <p className="text-xs text-emerald-400 mt-1">✅ {pitchDeckFile.name} selected</p>
                   )}
 
-                  <p className="text-xs text-[#FFD464]/70 mt-1">
+                  <p className="text-xs text-[#ffffff]/70 mt-1">
                     File size limit: 100MB | Allowed types: PDF, PPT
                   </p>
                 </div>
 
                 <div>
-                  <label className="form-label">Pitch Deck Explainer Video *</label>
+                  <label className="form-label" style={{ color: "#9fb3ff" }}>Pitch Deck Explainer Video *</label>
 
-                  <label className={`custom-upload mt-2 mb-2 cursor-pointer ${pitchVideoFile ? "selected" : ""}`}>
-                    <img src="/upload.svg" alt="Upload" className="w-5 h-5 mr-2" />
+                  <label
+                    className={`custom-upload mt-2 mb-2 cursor-pointer ${pitchVideoFile ? "selected" : ""}`}
+                    style={{
+                      backgroundColor: pitchDeckFile ? "#5b61ff" : "#25304d",
+                      border: pitchDeckFile ? "2px solid #8fa2ff" : "2px solid #2f3b5c",
+                      color: "#ffffff",
+                    }}
+                  >
+                    <img src="/upload.svg" alt="Upload" className="w-5 h-5 mr-2 invert " />
                     {pitchVideoFile ? "File Selected: " + pitchVideoFile.name : "Upload File"}
                     <input
                       type="file"
@@ -364,10 +408,10 @@ export default function ConceptioPage() {
                   </label>
 
                   {pitchVideoFile && (
-                    <p className="text-xs text-green-400 mt-1">✅ {pitchVideoFile.name} selected</p>
+                    <p className="text-xs text-emerald-400 mt-1">✅ {pitchVideoFile.name} selected</p>
                   )}
 
-                  <p className="text-xs text-[#FFD464]/70 mt-1">
+                  <p className="text-xs text-[#ffffff]/70 mt-1">
                     File size limit: 100MB | Allowed types: Video
                   </p>
                 </div>
@@ -377,15 +421,20 @@ export default function ConceptioPage() {
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-full py-3 mt-6 rounded-xl font-semibold text-lg bg-gradient-to-r from-[#E23C64] to-[#B0183D] text-white hover:scale-[1.03] hover:shadow-[0_0_25px_rgba(255,94,94,0.4)] transition"
+              className="w-full py-3 mt-6 rounded-xl font-semibold text-lg text-white hover:scale-[1.03] transition"
+              style={{
+                background: "linear-gradient(90deg,#2563eb,#4f46e5)",
+                boxShadow: "0 10px 30px rgba(79,70,229,0.12)",
+              }}
             >
               Submit
             </button>
 
-            {message && <p className="text-center text-[#FFD464] mt-4 font-medium">{message}</p>}
+            {message && <p className="text-center text-[#9fb3ff] mt-4 font-medium">{message}</p>}
           </form>
         </div>
       </div>
+      <Footer />
     </main>
   );
 }
